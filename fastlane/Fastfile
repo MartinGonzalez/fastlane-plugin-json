@@ -1,3 +1,37 @@
-lane :test do
-  json
+lane :read_json_test do
+  my_json = read_json(
+    json_path: "#{__dir__}/spec/resources/example.json",
+    verbose: true
+  )
+
+  p my_json
+end
+
+lane :download_json_test do
+  my_json = download_json(
+    json_url: "https://gist.githubusercontent.com/MartinGonzalez/77b28af666fc2ee844c96cf6c8c221a2/raw/d23feabf25abe39c9c7243fd23f92efa7f50a3fd/someExample.json",
+    verbose: true
+  )
+
+  p my_json
+end
+
+lane :write_json_test do
+  hash = {
+    name: "Martin",
+    age: 30
+  }
+
+  file_path = "#{__dir__}/tmp/test.json"
+  file_dir = File.dirname("../#{file_path}")
+
+  write_json(
+    hash: hash,
+    file_path: file_path,
+    verbose: true
+  )
+
+  p File.read("../#{file_path}")
+
+  FileUtils.rm_rf(file_dir)
 end

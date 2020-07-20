@@ -16,6 +16,11 @@ This plugin provide several actions that will allow you to manipulate and create
 
 ### read_json
 
+| Key       | Description       | Env Var | Default |
+|-----------|-------------------|---------|---------|
+| json_path | Path to json file |         |         |
+| verbose   | verbose           |         |  false  |
+
 Read a json file at specific path as a hash object.
 
 _Having a json file at `path/to/my.json` with the following content:_
@@ -40,6 +45,11 @@ puts my_json[:age]
 
 ### download_json
 
+| Key       | Description       | Env Var | Default |
+|-----------|-------------------|---------|---------|
+| json_url  | Url to json file  |         |         |
+| verbose   | verbose           |         |  false  |
+
 Downloads a json file from server and convert it to a hash object.
 
 ```ruby
@@ -56,6 +66,12 @@ puts my_json[:isDev]
 ```
 
 ### write_json
+
+| Key       | Description                               | Env Var | Default |
+|-----------|-------------------------------------------|---------|---------|
+| hash      | Hash that you want to save as a json file |         |         |
+| file_path | Path where you want to save your json     |         |         |
+| verbose   | verbose                                   |         |  false  |
 
 Creates a json file from a hash.
 

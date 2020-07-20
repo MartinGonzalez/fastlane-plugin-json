@@ -1,3 +1,11 @@
+## [0.1.3] (2020-07-20)
+
+### Added
+- Fastfile examples
+
+### Fixed
+- [Action] read_json data type
+
 ## [0.1.2] (2020-07-19)
 
 ### Added

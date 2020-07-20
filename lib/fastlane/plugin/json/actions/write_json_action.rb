@@ -21,7 +21,8 @@ module Fastlane
           return
         end
 
-        file_dir = File.dirname(file_path)
+        file_path_expanded = File.expand_path(file_path)
+        file_dir = File.dirname(file_path_expanded)
         Dir.mkdir(file_dir) unless File.directory?(file_dir)
         print_params(params) if @is_verbose
 
@@ -51,7 +52,7 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :hash,
                                        description: "Hash that you want to save as a json file",
                                        optional: false,
-                                       data_type: Hash,
+                                       type: Hash,
                                        verify_block: proc do |value|
                                          UI.user_error!("You must set hash: parameter") unless value && !value.empty?
                                        end),
@@ -60,12 +61,12 @@ module Fastlane
                                        is_string: true,
                                        optional: false,
                                        verify_block: proc do |value|
-                                         UI.user_error!("You must set file_path: parameter") unless value.nil?
+                                         UI.user_error!("You must set file_path: parameter") unless value && !value.empty?
                                        end),
           FastlaneCore::ConfigItem.new(key: :verbose,
                                        description: "verbose",
                                        optional: true,
-                                       data_type: Boolean)
+                                       type: Boolean)
         ]
       end
 

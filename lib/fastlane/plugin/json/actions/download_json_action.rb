@@ -47,7 +47,7 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :verbose,
                                        description: "verbose",
                                        optional: true,
-                                       data_type: Boolean,
+                                       type: Boolean,
                                        default_value: false)
 
         ]
