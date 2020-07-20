@@ -4,7 +4,7 @@ lane :read_json_test do
     verbose: true
   )
 
-  p my_json
+  p(my_json)
 end
 
 lane :download_json_test do
@@ -13,7 +13,7 @@ lane :download_json_test do
     verbose: true
   )
 
-  p my_json
+  p(my_json)
 end
 
 lane :write_json_test do
@@ -31,7 +31,7 @@ lane :write_json_test do
     verbose: true
   )
 
-  p File.read("../#{file_path}")
+  p(File.read("../#{file_path}"))
 
   FileUtils.rm_rf(file_dir)
 end
