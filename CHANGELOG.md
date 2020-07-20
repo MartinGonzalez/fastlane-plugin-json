@@ -1,5 +1,6 @@
-## [0.1.1] (2020-07-19)
+## [0.1.2] (2020-07-19)
 
 ### Added
-- action 1
-- action 2
+- [Action] read_json
+- [Action] write_json
+- [Action] download_json
