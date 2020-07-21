@@ -29,10 +29,11 @@ jobs:
       with:
         name: test-results
         path: test-results
-  build:    
+  build:
     name: "Build and Publish Gem"
     needs: test
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'no-publish')"
 
     steps:
     - uses: actions/checkout@v2
