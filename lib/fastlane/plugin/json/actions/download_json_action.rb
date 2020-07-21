@@ -25,6 +25,7 @@ module Fastlane
 
       def self.puts_error!(message)
         UI.user_error!(message)
+        raise StandardError, message
       end
 
       def self.description
@@ -54,7 +55,7 @@ module Fastlane
       end
 
       def self.print_params(options)
-        table_title = "Params for read_json #{Fastlane::Json::VERSION}"
+        table_title = "Params for download_json #{Fastlane::Json::VERSION}"
         FastlaneCore::PrintTable.print_values(config: options,
                                               hide_keys: [],
                                               title: table_title)

@@ -1,6 +1,20 @@
-# Fastlane Json plugin
+# Fastlane Json plugin <!-- omit in toc -->
 
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-json)
+
+
+- [Getting Started](#getting-started)
+- [Actions](#actions)
+  - [read_json](#read_json)
+  - [download_json](#download_json)
+  - [write_json](#write_json)
+  - [merge_jsons](#merge_jsons)
+- [Example](#example)
+- [Run tests for this plugin](#run-tests-for-this-plugin)
+- [Issues and Feedback](#issues-and-feedback)
+- [Troubleshooting](#troubleshooting)
+- [Using _fastlane_ Plugins](#using-fastlane-plugins)
+- [About _fastlane_](#about-fastlane)
 
 ## Getting Started
 
@@ -10,7 +24,7 @@ This project is a [_fastlane_](https://github.com/fastlane/fastlane) plugin. To 
 fastlane add_plugin json
 ```
 
-## About json
+## Actions
 
 This plugin provide several actions that will allow you to manipulate and create json files.
 
@@ -104,11 +118,53 @@ Will create a my_json.json file with the following content:
 }
 ```
 
+### merge_jsons
+
+| Key         | Description                               | Env Var | Default |
+|-------------|-------------------------------------------|---------|---------|
+| jsons_paths | Array of json files paths                 |         |         |
+| output_path | Output path where result will be saved    |         |         |
+| verbose     | verbose                                   |         |  false  |
+
+Merges several json files into one hash as output. Also you can set the `output_path` to save the merged hash into a json file.
+
+Having this files:
+
+`example.json`
+```json
+{
+  "name": "Martin",
+  "age": 30
+}
+```
+
+`example2.json`
+```json
+{
+  "lastName": "Gonzalez",
+  "age": 40,
+  "isDev": true
+}
+```
+
+```ruby
+output_path = "#{__dir__}/tmp/merged.json"
+
+merged_hash = merge_jsons(
+    jsons_paths: [
+      "path/to/example.json",
+      "path/to/example2.json"
+    ],
+    output_path: output_path
+  )
+
+# {:name=>"Martin", :age=>40, :lastName=>"Gonzalez", :isDev=>true}
+```
+
+
 ## Example
 
-Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
-
-**Note to author:** Please set up a sample project to make it easy for users to explore what your plugin does. Provide everything that is necessary to try out the plugin in this project (including a sample Xcode/Android project if necessary)
+Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane all`.
 
 ## Run tests for this plugin
 

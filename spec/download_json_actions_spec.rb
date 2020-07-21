@@ -12,16 +12,20 @@ describe "download_json should" do
   it "raise an error with a messsage if download fails" do
     expect(FastlaneCore::UI).to receive(:user_error!)
 
-    Fastlane::Actions::DownloadJsonAction.run(
-      json_url: "https://gist.someunixistingplace.com/dsdssd/dssds/raw/sddssd/someExample.json"
-    )
+    expect do
+      Fastlane::Actions::DownloadJsonAction.run(
+        json_url: "https://gist.someunixistingplace.com/dsdssd/dssds/raw/sddssd/someExample.json"
+      )
+    end.to raise_error(StandardError)
   end
 
   it "raise an error with a messsage if download succeed but json content is invalid" do
     expect(FastlaneCore::UI).to receive(:user_error!)
 
-    Fastlane::Actions::DownloadJsonAction.run(
-      json_url: "https://gist.githubusercontent.com/MartinGonzalez/c14ee66436eb9f9c77004f43b4e47ed8/raw/d77fd0648258cf15a6fa30da1b3a887a8332b24a/invalid.json"
-    )
+    expect do
+      Fastlane::Actions::DownloadJsonAction.run(
+        json_url: "https://gist.githubusercontent.com/MartinGonzalez/c14ee66436eb9f9c77004f43b4e47ed8/raw/d77fd0648258cf15a6fa30da1b3a887a8332b24a/invalid.json"
+      )
+    end.to raise_error(StandardError)
   end
 end

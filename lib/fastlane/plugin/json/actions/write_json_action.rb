@@ -11,20 +11,12 @@ module Fastlane
         @is_verbose = params[:verbose]
         print_params(params) if @is_verbose
 
-        if file_path.nil? || file_path.empty?
-          put_error!("file_path: value cannot be nil or empty")
-          return
-        end
-
-        if hash.nil?
-          put_error!("hash: value cannot be nil")
-          return
-        end
+        put_error!("file_path: value cannot be nil or empty") if file_path.nil? || file_path.empty?
+        put_error!("hash: value cannot be nil") if hash.nil?
 
         file_path_expanded = File.expand_path(file_path)
         file_dir = File.dirname(file_path_expanded)
         Dir.mkdir(file_dir) unless File.directory?(file_dir)
-        print_params(params) if @is_verbose
 
         begin
           File.open(file_path, "w") do |f|
@@ -37,6 +29,7 @@ module Fastlane
 
       def self.put_error!(message)
         UI.user_error!(message)
+        raise StandardError, message
       end
 
       def self.description

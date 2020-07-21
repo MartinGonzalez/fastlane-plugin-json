@@ -1,3 +1,11 @@
+## [0.1.4] (2020-07-20)
+
+### Added
+- [Action] merge_jsons
+
+### Fixed
+- Error handling in all actions
+
 ## [0.1.3] (2020-07-20)
 
 ### Added

@@ -1,3 +1,10 @@
+lane :all do
+  read_json_test
+  download_json_test
+  write_json_test
+  merge_jsons_test
+end
+
 lane :read_json_test do
   my_json = read_json(
     json_path: "#{__dir__}/spec/resources/example.json",
@@ -34,4 +41,24 @@ lane :write_json_test do
   p(File.read("../#{file_path}"))
 
   FileUtils.rm_rf(file_dir)
+end
+
+lane :merge_jsons_test do
+  output_path = "#{__dir__}/tmp/merged.json"
+
+  merged_hash = merge_jsons(
+    jsons_paths: [
+      "#{__dir__}/spec/resources/example.json",
+      "#{__dir__}/spec/resources/example2.json"
+    ],
+    output_path: output_path,
+    verbose: true
+  )
+
+  puts("Hash Value")
+  puts(merged_hash)
+
+  puts("Json file Value")
+  puts(File.read("../#{output_path}"))
+  FileUtils.rm_rf(File.dirname("../#{output_path}"))
 end

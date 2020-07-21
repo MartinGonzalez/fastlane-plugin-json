@@ -13,16 +13,20 @@ describe "read_json should" do
   it "raise an error when json path is not valid" do
     expect(FastlaneCore::UI).to receive(:user_error!)
 
-    Fastlane::Actions::ReadJsonAction.run(
-      json_path: "invalid/path"
-    )
+    expect do
+      Fastlane::Actions::ReadJsonAction.run(
+        json_path: "invalid/path"
+      )
+    end.to raise_error(StandardError)
   end
 
   it "raise an error when json content is invalid" do
     expect(FastlaneCore::UI).to receive(:user_error!)
 
-    Fastlane::Actions::ReadJsonAction.run(
-      json_path: "#{__dir__}/resources/invalid.json"
-    )
+    expect do
+      Fastlane::Actions::ReadJsonAction.run(
+        json_path: "#{__dir__}/resources/invalid.json"
+      )
+    end.to raise_error(StandardError)
   end
 end

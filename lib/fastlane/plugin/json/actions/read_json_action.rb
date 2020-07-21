@@ -26,6 +26,7 @@ module Fastlane
 
       def self.put_error!(message)
         UI.user_error!(message)
+        raise StandardError, message
       end
 
       def self.description
