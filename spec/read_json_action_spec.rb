@@ -16,7 +16,7 @@ describe "read_json should" do
     json = Fastlane::Actions::ReadJsonAction.run({
       json_string: json_as_string
     })
-  
+
     expect(json).to have_key(:name)
     expect(json).to have_key(:age)
     expect(json[:name]).to eq("Martin")
