@@ -4,19 +4,30 @@ require "json"
 
 module Fastlane
   module Actions
-    class ReadJsonAction < Action
+    class ReadJsonAction < Action  
       def self.run(params)
         json_path = params[:json_path]
+        json_string = params[:json_string]
         @is_verbose = params[:verbose]
 
-        print_params(params) if @is_verbose
-
-        unless File.file?(json_path)
-          put_error!("File at path #{json_path} does not exist. Verify that the path is correct ❌")
+        if json_path.nil? && json_string.nil?
+          put_error!("You need to provide a json_path (file to path) or json_string (json as string) ❌")
           return nil
         end
 
-        json_content = File.read(json_path)
+        print_params(params) if @is_verbose
+
+        json_content = json_string
+
+        unless json_path.nil?
+          unless File.file?(json_path)
+            put_error!("File at path #{json_path} does not exist. Verify that the path is correct ❌")
+            return nil
+          end
+
+          json_content = File.read(json_path)
+        end
+
         begin
           JSON.parse(json_content, symbolize_names: true)
         rescue
@@ -42,10 +53,11 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :json_path,
                                        description: "Path to json file",
                                        is_string: true,
-                                       optional: false,
-                                       verify_block: proc do |value|
-                                         UI.user_error!("You must set json_path pointing to a json file") unless value && !value.empty?
-                                       end),
+                                       optional: true),
+          FastlaneCore::ConfigItem.new(key: :json_string,
+                                        description: "A json as string",
+                                        is_string: true,
+                                        optional: true),
           FastlaneCore::ConfigItem.new(key: :verbose,
                                        description: "verbose",
                                        optional: true,

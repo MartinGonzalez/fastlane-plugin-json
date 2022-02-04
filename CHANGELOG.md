@@ -1,3 +1,8 @@
+## [1.1.0] (2020-07-27)
+
+### Added
+- read_json from a json string
+
 ## [1.0.0] (2020-07-27)
 
 ### Added

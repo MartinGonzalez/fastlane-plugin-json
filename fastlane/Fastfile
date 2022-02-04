@@ -14,6 +14,15 @@ lane :read_json_test do
   p(my_json)
 end
 
+lane :read_json_string_test do
+  my_json = read_json(
+    json_string: "{\r\n    \"name\": \"Martin\",\r\n    \"age\": 30\r\n  }\r\n  ",
+    verbose: true
+  )
+
+  p(my_json)
+end
+
 lane :download_json_test do
   my_json = download_json(
     json_url: "https://gist.githubusercontent.com/MartinGonzalez/77b28af666fc2ee844c96cf6c8c221a2/raw/d23feabf25abe39c9c7243fd23f92efa7f50a3fd/someExample.json",
