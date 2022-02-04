@@ -4,7 +4,7 @@ require "json"
 
 module Fastlane
   module Actions
-    class ReadJsonAction < Action  
+    class ReadJsonAction < Action
       def self.run(params)
         json_path = params[:json_path]
         json_string = params[:json_string]
