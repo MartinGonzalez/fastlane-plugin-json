@@ -7,11 +7,11 @@ require 'fastlane/plugin/json/version'
 Gem::Specification.new do |spec|
   spec.name          = 'fastlane-plugin-json'
   spec.version       = Fastlane::Json::VERSION
-  spec.author        = 'Martin Gonzalez'
-  spec.email         = 'gonzalez.martin90@gmail.com'
+  spec.author        = ['Martin Gonzalez', 'Thang Nguyen']
+  spec.email         = ['gonzalez.martin90@gmail.com', 'thang.nguyencao@gmail.com']
 
   spec.summary       = 'actions related to json files'
-  spec.homepage      = "https://github.com/martingonzalez/fastlane-plugin-json"
+  spec.homepage      = "https://github.com/thangnc/fastlane-plugin-json_auth"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)

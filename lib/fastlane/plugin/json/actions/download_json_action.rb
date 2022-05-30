@@ -9,12 +9,16 @@ module Fastlane
       def self.run(params)
         json_url = params[:json_url]
         @is_verbose = params[:verbose]
+
         uri = URI(json_url)
+        request = Net::HTTP::Get.new uri.request_uri
+        request.basic_auth params[:username], params[:password]
+
         print_params(params) if @is_verbose
         puts("Downloading json from #{uri}") if @is_verbose
 
         begin
-          response = Net::HTTP.get_response(uri)
+          response = http.request request
           JSON.parse(response.body, symbolize_names: true)
         rescue JSON::ParserError
           puts_error!("Downloaded json has invalid content ❌")
