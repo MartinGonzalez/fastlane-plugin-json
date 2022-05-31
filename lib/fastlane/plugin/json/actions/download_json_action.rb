@@ -22,8 +22,7 @@ module Fastlane
                           verify_mode: OpenSSL::SSL::VERIFY_NONE) do |http|
 
             request = Net::HTTP::Get.new(uri.request_uri)
-            if !username.nil? && !username.empty? && !password.nil? && !password.empty?
-              request.basic_auth(params[:username], params[:password])
+            if !username.to_s.empty? && !password.to_s.empty?
             end
 
             response = http.request(request)
