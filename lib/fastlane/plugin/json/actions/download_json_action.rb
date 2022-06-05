@@ -23,6 +23,7 @@ module Fastlane
 
             request = Net::HTTP::Get.new(uri.request_uri)
             if !username.to_s.empty? && !password.to_s.empty?
+              request.basic_auth(params[:username], params[:password])
             end
 
             response = http.request(request)
