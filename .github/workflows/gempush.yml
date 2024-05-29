@@ -37,7 +37,7 @@ jobs:
     - name: Semantic Release
       env:
         GITHUB_TOKEN: ${{ github.token }}
-        NUGET_TOKEN: ${{ secrets.NUGET_API_TOKEN }}
+        GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
       run: |
         npm install -g semantic-release@23.0.8
         npm install -g @semantic-release/changelog@6.0.3
