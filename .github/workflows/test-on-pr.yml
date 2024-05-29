@@ -1,12 +1,18 @@
-name: Test-Build-Publish
+name: PR Validations
 
 on:
-  push:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
     branches:
       - master
+      - develop
 
 jobs:
-  test:
+  tests:
+    name: "Tests"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -19,7 +25,8 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.4
+        ruby-version: 3.0.0
+
     - name: Install dependencies
       run: bundle check || bundle install --jobs=4 --retry=3 --path vendor/bundle
     - name: Run tests
@@ -29,26 +36,17 @@ jobs:
       with:
         name: test-results
         path: test-results
-  build:
-    name: "Build and Publish Gem"
-    needs: test
-    runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, 'no-publish')"
 
+  build:
+    name: "Build"
+    needs: tests
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6.x
-
-    - name: Publish to RubyGems
+        ruby-version: 3.0.0
+    - name: Build Gem
       run: |
-        mkdir -p ~/.gem
-        touch ~/.gem/credentials
-        chmod 0600 ~/.gem/credentials
-        printf -- "---\n:rubygems_api_key: ${RUBYGEMS_API_KEY}\n" > ~/.gem/credentials
         gem build *.gemspec
-        gem push *.gem
-      env:
-        RUBYGEMS_API_KEY: "${{secrets.RUBYGEMS_API_KEY}}"
