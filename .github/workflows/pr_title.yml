@@ -1,9 +1,13 @@
 name: "PR Title Validation"
 
 on:
-  push:
+  pull_request:
     branches:
       - develop
+    types:
+      - opened
+      - edited
+      - synchronize
 
 permissions:
   pull-requests: read
