@@ -44,7 +44,7 @@ jobs:
         npm install -g @semantic-release/exec@6.0.3
         npm install -g @semantic-release/github@10.0.3
         npm install -g @semantic-release/release-notes-generator@13.0.0
-        npm install -g @semantic-release-rubygem
+        npm install -g semantic-release-rubygem@1.2.0
         npm install -g @droidsolutions-oss/semantic-release-update-file@1.4.0
         semantic-release
 
