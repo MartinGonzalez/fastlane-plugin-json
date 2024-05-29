@@ -31,8 +31,10 @@ jobs:
         name: test-results
         path: test-results
 
-
-    - name: Publish NuGet Package
+    - uses: actions/setup-node@v2
+      with:
+        node-version: "20.x"
+    - name: Semantic Release
       env:
         GITHUB_TOKEN: ${{ github.token }}
         NUGET_TOKEN: ${{ secrets.NUGET_API_TOKEN }}
