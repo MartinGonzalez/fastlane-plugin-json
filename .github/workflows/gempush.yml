@@ -19,7 +19,8 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.4
+        ruby-version: 3.0.0
+
     - name: Install dependencies
       run: bundle check || bundle install --jobs=4 --retry=3 --path vendor/bundle
     - name: Run tests
@@ -29,19 +30,18 @@ jobs:
       with:
         name: test-results
         path: test-results
+
   build:
     name: "Build and Publish Gem"
     needs: test
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'no-publish')"
-
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6.x
-
+        ruby-version: 3.0.0
     - name: Publish to RubyGems
       run: |
         mkdir -p ~/.gem
