@@ -1,6 +1,7 @@
 name: 'Setup Ruby'
 description: 'Setup Ruby environment and install dependencies'
 runs:
+  runs-on: ubuntu-latest
   using: 'composite'
   steps:
     - uses: actions/cache@v1
