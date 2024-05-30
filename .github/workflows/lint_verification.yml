@@ -26,7 +26,7 @@ jobs:
 
     - name: Install dependencies
       run: bundle check || bundle install --jobs=4 --retry=3 --path vendor/bundle
-    - name: Run tests
+    - name: Run Lint
       run: bundle exec rubocop -l
     
     - name: Notify on failure
