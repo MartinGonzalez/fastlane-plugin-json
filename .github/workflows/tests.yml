@@ -6,7 +6,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    environment: RUBY DEPLOY
     steps:
       - uses: actions/checkout@v3
 
