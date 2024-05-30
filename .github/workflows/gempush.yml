@@ -10,13 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     environment: RUBY DEPLOY
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+      with:
+          persist-credentials: false
     - uses: actions/cache@v1
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile') }}
         restore-keys: |
           ${{ runner.os }}-gem-
+          
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
@@ -37,7 +40,7 @@ jobs:
         node-version: "20.x"
     - name: Semantic Release      
       env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
       run: |
         npm install -g semantic-release@23.0.8
