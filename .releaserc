@@ -61,7 +61,7 @@
       {
         "assets": [
           "CHANGELOG.md",
-          "lib/fastlane/json/version.rb"
+          "lib/**/version.rb"
         ],
         "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
