@@ -36,4 +36,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
-      run: semantic-release
+      run: echo "Deploying..."
