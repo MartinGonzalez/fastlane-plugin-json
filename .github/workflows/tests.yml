@@ -9,7 +9,9 @@ jobs:
     environment: RUBY DEPLOY
     steps:
       - uses: actions/checkout@v3
-      - uses: ./github/actions/setup-ruby/action.yml
+
+      - name: Set up Ruby
+        uses: ./.github/actions/setup-ruby
       
       - name: Run tests
         run: bundle exec rake
