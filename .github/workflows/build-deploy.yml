@@ -1,13 +1,14 @@
 name: Build-Deploy
 
 on:
-  workflow_call        
+  workflow_call:
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     environment: RUBY DEPLOY
     steps:
+    - uses: actions/checkout@v3
     - uses: ./.github/actions/setup-ruby
       
     ## Node Setup

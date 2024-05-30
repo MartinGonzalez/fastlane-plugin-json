@@ -10,6 +10,7 @@ jobs:
     uses: ./.github/workflows/tests.yml
     secrets: inherit
 
-  build-deploy:
+  build-deploy:    
+    needs: test
     uses: ./.github/workflows/build-deploy.yml
     secrets: inherit

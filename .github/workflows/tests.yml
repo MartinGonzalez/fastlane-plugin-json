@@ -1,14 +1,15 @@
 name: Tests
 
 on:
-  workflow_call
+  workflow_call:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     environment: RUBY DEPLOY
     steps:
-      - uses: ./.github/actions/setup-ruby
+      - uses: actions/checkout@v3
+      - uses: ./github/actions/setup-ruby/action.yml
       
       - name: Run tests
         run: bundle exec rake
