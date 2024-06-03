@@ -1,3 +1,11 @@
+## [1.1.5](https://github.com/MartinGonzalez/fastlane-plugin-json/compare/v1.1.4...v1.1.5) (2024-06-03)
+
+
+### Bug Fixes
+
+* changelog ([6d46aae](https://github.com/MartinGonzalez/fastlane-plugin-json/commit/6d46aaed090a4d0b3e69d352273b5a1f031fdfd8))
+* ci stuff ([7c935b3](https://github.com/MartinGonzalez/fastlane-plugin-json/commit/7c935b328d31d725d9c9f07b9724d227772aae74))
+
 ## [1.1.4](https://github.com/MartinGonzalez/fastlane-plugin-json/compare/v1.1.3...v1.1.4) (2024-06-03)
 
 
