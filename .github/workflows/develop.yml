@@ -9,3 +9,13 @@ jobs:
   test:
     uses: ./.github/workflows/tests.yml
     secrets: inherit
+  
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Ruby
+        uses: ./.github/actions/setup-ruby
+      
+      - name: Build Gem
+        run: |
+          gem build *.gemspec
