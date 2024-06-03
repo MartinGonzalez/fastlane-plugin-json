@@ -31,5 +31,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `🚨 Invalid Pull Request Title!\n\nDon't worry, you need to follow semantic release PR title.\nIf you are fixing something use \`fix: something somewhere\`.\nIf you are adding new behaviour use \`feat: added this cool behaviour\`.`
+              body: `🚨 Invalid Pull Request Title!\n\nBut don't worry, you need to follow semantic release PR title.\n\nIf you are fixing something use \`fix: here your message\`\nIf you are adding new behaviour use \`feat: here your message\`.`
             })
