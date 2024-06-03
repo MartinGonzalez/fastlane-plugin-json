@@ -19,12 +19,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      
+
       - name: Validate PR title
         uses: amannn/action-semantic-pull-request@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Notify on failure
         if: failure()
         uses: actions/github-script@v6
@@ -34,5 +34,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '🚨 Invalid Pull Request Title!\n\nDon't worry, you need to follow semantic release PR title.\nIf you are fixing something use `fix: something somewhere\nIf you are adding new behaviour use `feat: added this cool behaviour`.'
+              body: `🚨 Invalid Pull Request Title!\n\nDon't worry, you need to follow semantic release PR title.\nIf you are fixing something use \`fix: something somewhere\`.\nIf you are adding new behaviour use \`feat: added this cool behaviour\`.`
             })
