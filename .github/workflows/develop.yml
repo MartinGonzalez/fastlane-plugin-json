@@ -29,11 +29,13 @@ jobs:
 
 ## Testing
   test:
+    name: "Tests"
     uses: ./.github/workflows/tests.yml
 
 ## Building  
   build:
     runs-on: ubuntu-latest
+    name: "Build Gem"
     steps:
       - uses: actions/checkout@v3
 
