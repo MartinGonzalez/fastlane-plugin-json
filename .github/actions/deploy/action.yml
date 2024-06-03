@@ -1,16 +1,17 @@
 name: Build-Deploy
-
-on:
-  workflow_call:
-
-jobs:
+description: "Build and deploy the gem"
+inputs:
+  GITHUB_TOKEN:
+    description: "GitHub Token"
+    required: true
+  GEM_HOST_API_KEY:
+    description: "RubyGems API Key"
+    required: true
+runs:
+  using: "composite"
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3    
-      with:
-        persist-credentials: false
-
     - name: Set up Ruby
       uses: ./.github/actions/setup-ruby
       
@@ -21,6 +22,7 @@ jobs:
 
     ## Install dependencies
     - name: Install Semantic Release
+      shell: bash
       run: |
         npm install -g semantic-release@23.0.8
         npm install -g @semantic-release/changelog@6.0.3
@@ -34,8 +36,9 @@ jobs:
 
     ## Deploy
     - name: Release
+      shell: bash
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+        GEM_HOST_API_KEY: ${{ inputs.GEM_HOST_API_KEY }}
       run: |
         semantic-release

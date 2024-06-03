@@ -8,12 +8,21 @@ on:
 
 jobs:
   test:
+    runs-on: ubuntu-latest
     name: "Tests"
-    uses: ./.github/workflows/tests.yml
-    secrets: inherit
+    steps:
+      - uses: actions/checkout@v3
+      - name: Running Tests
+        uses: ./.github/actions/tests
 
   build-deploy:
+    runs-on: ubuntu-latest
     name: "Build & Deploy"
     needs: test
-    uses: ./.github/workflows/build-deploy.yml
-    secrets: inherit
+    steps:
+      - uses: actions/checkout@v3
+      - name: Building And Deploying Gem
+        uses: ./.github/actions/deploy
+        with:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GEM_HOST_API_KEY: ${{ secrets.GEM_HOST_API_KEY }}
