@@ -38,7 +38,11 @@ jobs:
 ## Testing
   test:
     name: "Tests"
-    uses: ./.github/workflows/tests.yml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Running Tests
+        uses: ./.github/actions/tests
 
 ## Building  
   build:
