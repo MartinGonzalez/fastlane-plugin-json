@@ -1,3 +1,13 @@
+## [1.1.3](https://github.com/MartinGonzalez/fastlane-plugin-json/compare/v1.1.2...v1.1.3) (2024-06-03)
+
+
+### Bug Fixes
+
+* add something ([#15](https://github.com/MartinGonzalez/fastlane-plugin-json/issues/15)) ([8700c0a](https://github.com/MartinGonzalez/fastlane-plugin-json/commit/8700c0a1d6b9daf0d923ca88e9d674109d72d704))
+* doing some test CI  ([#12](https://github.com/MartinGonzalez/fastlane-plugin-json/issues/12)) ([a13a78e](https://github.com/MartinGonzalez/fastlane-plugin-json/commit/a13a78e4e06936ad899732b286a90f140e6a6757))
+* other fix ([#16](https://github.com/MartinGonzalez/fastlane-plugin-json/issues/16)) ([c30e7d8](https://github.com/MartinGonzalez/fastlane-plugin-json/commit/c30e7d8f6bf2672a9d1ce2a4df98d678fdef3585))
+* this is an valid PR title ([#13](https://github.com/MartinGonzalez/fastlane-plugin-json/issues/13)) ([e2954ef](https://github.com/MartinGonzalez/fastlane-plugin-json/commit/e2954ef79655ce3c539e74e24a8b5ab6f5db5779))
+
 ## [1.1.2](https://github.com/MartinGonzalez/fastlane-plugin-json/compare/v1.1.1...v1.1.2) (2024-06-03)
 
 
