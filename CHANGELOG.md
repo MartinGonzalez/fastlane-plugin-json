@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/MartinGonzalez/fastlane-plugin-json/compare/v1.1.3...v1.1.4) (2024-06-03)
+
+
+### Bug Fixes
+
+* dummy chnage ([be93959](https://github.com/MartinGonzalez/fastlane-plugin-json/commit/be93959cb37c86fc581c27a0aef28e9efdb89b1b))
+
 ## [1.1.3](https://github.com/MartinGonzalez/fastlane-plugin-json/compare/v1.1.2...v1.1.3) (2024-06-03)
 
 
