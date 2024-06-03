@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/MartinGonzalez/fastlane-plugin-json/compare/v1.1.5...v1.1.6) (2024-06-03)
+
+
+### Bug Fixes
+
+* removed file ([#28](https://github.com/MartinGonzalez/fastlane-plugin-json/issues/28)) ([fdd8b5b](https://github.com/MartinGonzalez/fastlane-plugin-json/commit/fdd8b5bfee5b31bff51ae4de000b54b098a1ee5d))
+
 ## [1.1.5](https://github.com/MartinGonzalez/fastlane-plugin-json/compare/v1.1.4...v1.1.5) (2024-06-03)
 
 
