@@ -1,11 +1,49 @@
 name: Develop Workflow
 
 on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+    branches:
+      - master
+      - develop
   push:
     branches:
       - develop
 
 jobs:
+## Lint Verification
+  lint:
+    name: "Rubocop Lint"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ./.github/actions/setup-ruby
+      
+      - name: Run Rubocop
+        run: bundle exec rubocop -l
+
+## Testing
   test:
+    name: "Tests"
     uses: ./.github/workflows/tests.yml
-    secrets: inherit
+
+## Building  
+  build:
+    runs-on: ubuntu-latest
+    name: "Build Gem"
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ./.github/actions/setup-ruby
+      
+      - name: Build Gem
+        run: |
+          gem build *.gemspec
+
+  
