@@ -2,12 +2,12 @@ name: "PR Validations"
 
 on:
   pull_request:
-    branches:
-      - develop
     types:
       - opened
       - edited
       - synchronize
+    branches:
+      - develop
 
 jobs:
   main:
