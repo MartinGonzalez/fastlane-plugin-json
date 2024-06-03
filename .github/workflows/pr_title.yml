@@ -27,3 +27,15 @@ jobs:
         with:
           validateSingleCommit: true
           validateSingleCommitMatchesPrTitle: true
+      
+      - name: Notify on failure
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🚨 Invalid Pull Request Title!\n\nDon't worry, you need to follow semantic release PR title.\nIf you are fixing something use `fix: something somewhere\nIf you are adding new behaviour use `feat: added this cool behaviour`.'
+            })
